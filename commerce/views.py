@@ -14,6 +14,26 @@ def sell_car(request, car_name, description, brand, quantity,  price, image):
 
     return car_for_sale
 
+def buy_car(request):
+    # Get distinct body styles and brands
+    body_styles = CarModel.objects.values_list('body_style', flat=True).distinct()
+    brands = BrandModel.objects.all()
+
+    if request.method == 'POST':
+        # Handle form submission
+        price = request.POST.get('price')
+        body_style = request.POST.get('body_style')
+        brand_id = request.POST.get('brand')
+
+        # Perform further processing with the user inputs
+        # For example, you can filter cars based on the user's choices
+        selected_brand = BrandModel.objects.get(pk=brand_id)
+        cars = CarModel.objects.filter(price__lte=price, body_style=body_style, brand=selected_brand)
+
+        # You can then pass the filtered cars to the template or perform any other logic
+
+    return render(request, 'buy.html', {'body_styles': body_styles, 'brands': brands})
+
 
 
 

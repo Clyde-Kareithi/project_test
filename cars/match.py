@@ -6,7 +6,7 @@ CAR_STORE = {
             'body_type': 'coupe',
             'fuel_type': 'petrol',
             'description': '',
-            'price': 5000000
+            'price': 4500000
         },
         {
             'name': 'a6',
@@ -14,7 +14,7 @@ CAR_STORE = {
             'body_type': 'sedan',
             'fuel_type': 'petrol',
             'description': '',
-            'price': 5000000
+            'price': 5500000
         },
         {
             'name': 'a7',
@@ -22,7 +22,7 @@ CAR_STORE = {
             'body_type': 'coupe',
             'fuel_type': 'petrol',
             'description': '',
-            'price': 5000000
+            'price': 6500000
         },
         {
             'name': 'a8',
@@ -30,7 +30,7 @@ CAR_STORE = {
             'body_type': 'coupe',
             'fuel_type': 'petrol',
             'description': '',
-            'price': 5000000
+            'price': 8500000
         },
         {
             'name': 'q7',
@@ -38,7 +38,7 @@ CAR_STORE = {
             'body_type': 'suv',
             'fuel_type': 'petrol',
             'description': '',
-            'price': 10000000
+            'price': 6500000
         },
         {
             'name': 'q7',
@@ -46,7 +46,7 @@ CAR_STORE = {
             'body_type': 'suv',
             'fuel_type': 'diesel',
             'description': '',
-            'price': 8000000
+            'price': 5500000
         },
         {
             'name': 'q8',
