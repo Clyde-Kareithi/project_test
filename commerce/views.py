@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import CarCommerce
 from cars.models import CarModel, BrandModel
+from .forms import YourCarForm
 
 # Create your views here.
 @login_required
@@ -34,6 +35,19 @@ def buy_car(request):
 
     return render(request, 'buy.html', {'body_styles': body_styles, 'brands': brands})
 
+
+def add_car(request):
+    if request.method == 'POST':
+        form = YourCarForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Save the form or perform other actions
+            form.save()
+            return render(request, 'success_page.html')  # Redirect to a success page after saving
+
+    else:
+        form = YourCarForm()
+
+    return render(request, 'sell.html', {'form': form})
 
 
 

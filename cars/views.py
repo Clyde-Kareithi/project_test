@@ -8,6 +8,10 @@ from django.views.generic import CreateView, DetailView
 from django.utils.decorators import method_decorator
 from users.models import CarModel
 from users.forms import CommentForm
+from PIL import Image
+from django.core.files.uploadedfile import SimpleUploadedFile
+from io import BytesIO
+from .forms import YourCarForm
 # Create your views here.
 
 
@@ -90,3 +94,17 @@ def buy_now(request, id):
     car.save()
 
     return redirect(dynamic_url)
+
+
+def add_car(request):
+    if request.method == 'POST':
+        form = YourCarForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Save the form or perform other actions
+            form.save()
+            return render(request, 'success_page.html')  # Redirect to a success page after saving
+
+    else:
+        form = YourCarForm()
+
+    return render(request, 'your_template.html', {'form': form})

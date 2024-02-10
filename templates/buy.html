@@ -20,12 +20,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'buy_page' %}">Buy Cars</a>
-                </li>
-                <li class="nav-item ml-auto"> <!-- Apply ml-auto here -->
-                    <a class="px-100" href="">Login</a>
-                </li>
+                <li class="nav-item"> <a class="nav-link px-4" href="{% url 'buy_page' %}">Buy a Car</a> </li>
+                <a class="nav-link px-4" href="{% url 'buy_page' %}">Sell your Car</a>
+                <li class="nav-item my-2 px-4 me-2"><a class="" href="">Login</a> </li>
             </ul>
         </div>
     </div>
@@ -51,7 +48,24 @@
             <label for="body_style" class="form-label">Choose Body Style:</label>
             <select name="body_style" class="form-select"  style ="width: 200px"required>
                 {% for style in body_styles %}
-                    <option value="{{ style }}">Choose body style</option>
+                    <option value="{{ brand.id }}">Any</option>
+                    <option value="{{ style }}">Hatchback</option>
+                    <option value="{{ style }}">Sedan</option>
+                    <option value="{{ style }}">Wagon</option>
+                    <option value="{{ style }}">SUV</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="body_style" class="form-label">Choose use case:</label>
+            <select name="body_style" class="form-select"  style ="width: 200px"required>
+                {% for style in body_styles %}
+                    <option value="{{ brand.id }}">Any</option>
+                    <option value="{{ style }}">Long distance</option>
+                    <option value="{{ style }}">Short distance</option>
+                    <option value="{{ style }}">Commercial</option>
+                    <option value="{{ style }}">Sports cars</option>
                 {% endfor %}
             </select>
         </div>
@@ -60,7 +74,22 @@
             <label for="brand" class="form-label">Select Brand:</label>
             <select name="brand" class="form-select" style ="width: 200px" required>
                 {% for brand in brands %}
-                    <option value="{{ brand.id }}">Select brand</option>
+                    <option value="{{ brand.id }}">Any</option>
+                    <option value="{{ brand.id }}">Audi</option>
+                    <option value="{{ brand.id }}">BMW</option>
+                    <option value="{{ brand.id }}">Honda</option>
+                    <option value="{{ brand.id }}">Land Rover</option>
+                    <option value="{{ brand.id }}">Lexus</option>
+                    <option value="{{ brand.id }}">Mazda</option>
+                    <option value="{{ brand.id }}">Mitsubishi</option>
+                    <option value="{{ brand.id }}">Mercedes Benz</option>
+                    <option value="{{ brand.id }}">Nissan</option>
+                    <option value="{{ brand.id }}">Porsche</option>
+                    <option value="{{ brand.id }}">Peugeot</option>
+                    <option value="{{ brand.id }}">Suzuki</option>
+                    <option value="{{ brand.id }}">Toyota</option>
+                    <option value="{{ brand.id }}">Volvo</option>
+                    <option value="{{ brand.id }}">Volkswagen</option>
                 {% endfor %}
             </select>
         </div>
