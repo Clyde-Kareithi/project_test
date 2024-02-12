@@ -1,5 +1,5 @@
 {% extends "base.html" %} 
-{%load crispy_forms_tags%} 
+{% load crispy_forms_tags %} 
 {% block content %}
 <section class="">
   <div class="my-5 container row mx-auto">
@@ -12,7 +12,7 @@
         <p class="card-text fs-6">{{car.description}}</p>
         <hr />
         <h4 class="fw-bold text-primary">{{car.brand.brand_name}}</h4>
-        <small class="">Qunatity : {{car.quantity}}</small> <br />
+        <small class="">Quantity : {{car.quantity}}</small> <br />
         <h6 class="my-2">
           Price : <span id="order-price">${{car.price}}</span>
         </h6>
@@ -46,16 +46,16 @@
       </div>
       {% endfor %}
     </div>
-    {% comment %} comments Input {% endcomment %} {% if
-    request.user.is_authenticated %}
-    <div class="my-5 py-3 border rounded shadow-sm bg-white">
-      <h1 class="text-center">Add Comment</h1>
+    {% comment %} comments Input {% endcomment %} 
+    {% if request.user.is_authenticated %}
+      <div class="my-5 py-3 border rounded shadow-sm bg-white">
+        <h1 class="text-center">Add Comment</h1>
 
-      <form method="POST" action="" class="mx-4">
-        {% csrf_token %} {{comment_form|crispy}}
-        <button class="btn btn-warning" type="submit">Send</button>
-      </form>
-    </div>
+        <form method="POST" action="" class="mx-4">
+          {% csrf_token %} {{comment_form|crispy}}
+          <button class="btn btn-warning" type="submit">Send</button>
+        </form>
+      </div>
     {% endif %}
   </div>
 </section>
