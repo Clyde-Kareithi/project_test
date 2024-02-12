@@ -2,18 +2,18 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from .models import CarCommerce
 from cars.models import CarModel, BrandModel
-from .forms import YourCarForm
+from .forms import RecommendationForm, YourCarForm
 
 # Create your views here.
-@login_required
-def sell_car(request, car_name, description, brand, quantity,  price, image):
-    existing_brand = BrandModel.objects.get_or_create(brand_name=brand)
-    car = CarModel.objects.create(car_name=car_name, description=description, brand=existing_brand, quantity=quantity, price=price, image=image)
-    current_user = request.user
-    car_for_sale = CarCommerce.objects.create(car=car, user=current_user)
-    car_for_sale.save()
+# @login_required
+# def sell_car(request, car_name, description, brand, quantity,  price, image):
+#     existing_brand = BrandModel.objects.get_or_create(brand_name=brand)
+#     car = CarModel.objects.create(car_name=car_name, description=description, brand=existing_brand, quantity=quantity, price=price, image=image)
+#     current_user = request.user
+#     car_for_sale = CarCommerce.objects.create(car=car, user=current_user)
+#     car_for_sale.save()
 
-    return car_for_sale
+#     return car_for_sale
 
 def buy_car(request):
     # Get distinct body styles and brands
@@ -33,8 +33,21 @@ def buy_car(request):
 
         # You can then pass the filtered cars to the template or perform any other logic
 
-    return render(request, 'buy.html', {'body_styles': body_styles, 'brands': brands})
+    return render(request, 'buyer.html', {'body_styles': body_styles, 'brands': brands})
 
+
+def sell_car(request): 
+    seller_form = YourCarForm()
+    if seller_form.is_valid():
+        car = seller_form.save()
+        commerce = CarCommerce.objects.create(car=car, user=request.user)
+        commerce.save()
+    return render(request, 'seller.html', {'seller_form': seller_form})
+
+
+def get_recommended_cards(request):
+    recommender_form = RecommendationForm()
+    return render(request, "buyer.html", {'recommender_form': recommender_form})
 
 def add_car(request):
     if request.method == 'POST':
