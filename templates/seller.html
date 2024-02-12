@@ -6,9 +6,7 @@
     <p>Let&apos;s get started! Please fill out the following form to sell your vehicle.</p>
 
     {% if request.user.is_authenticated %}
-        <div class="my-5 py-3 border rounded shadow-sm bg-white">
-            <h1 class="text-center">Add Seller</h1>
-
+        <div class="my-5 py-3 shadow-sm bg-white">
             <form method="POST" action="" class="mx-4">
             {% csrf_token %} {{seller_form|crispy}}
             <button class="btn btn-warning" type="submit">Send</button>

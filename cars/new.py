@@ -1,3 +1,6 @@
+from cars.models import CarModel
+
+
 CAR_STORE = {
     'long_distance': [
         {
@@ -1488,15 +1491,17 @@ CAR_STORE = {
 }
 
 
-def recommend_cars(price, body_type, purpose):
-    selections = []
-    for key, value in CAR_STORE.items():
-        if key is purpose:
-            selections = value
-    
-    recommendations = [selection for selection in selections if selection['price'] >= price and selection['body_type'] == body_type]
-
-    return recommendations
-
-
-print(recommend_cars(500000, 'sedan', 'long_distance'))
+def insert_data(data):
+    for use_case, cars in data.items():
+        for car_data in cars:
+            car_model = CarModel.objects.create(
+                car_name=car_data['name'],
+                description=car_data['description'],
+                price=car_data['price'],
+                usecase=use_case.upper(),
+                fuel_type=car_data['fuel_type'].upper(),
+                brand=car_data['brand'],  # Assuming brand is already an instance of BrandModel
+            )
+            car_model.save()
+            
+insert_data(CAR_STORE)

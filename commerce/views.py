@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+
+from cars.forms import CarForm
 from .models import CarCommerce
 from cars.models import CarModel, BrandModel
 from .forms import RecommendationForm, YourCarForm
@@ -27,7 +29,7 @@ def buy_car(request):
 
 
 def sell_car(request): 
-    seller_form = YourCarForm()
+    seller_form = CarForm()
     if seller_form.is_valid():
         car = seller_form.save()
         commerce = CarCommerce.objects.create(car=car, user=request.user)
