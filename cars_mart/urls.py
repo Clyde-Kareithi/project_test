@@ -10,7 +10,7 @@ urlpatterns = [
     path("brands/<slug:brand>", home, name="brand_name"),
     path("cars/", include("cars.urls")),
     path("users/", include("users.urls")),
-    path("commerce/", include("commerce.urls"))
+    path("sell/", include("commerce.urls"))
 ]
 
 
